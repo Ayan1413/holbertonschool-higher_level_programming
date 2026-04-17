@@ -1,47 +1,43 @@
 #!/usr/bin/python3
 """
-This module contains a function that divides all elements of a matrix.
+This module provides a function to divide all elements of a matrix.
 """
 
 
 def matrix_divided(matrix, div):
     """
-    Divides all elements of a matrix by a divisor.
-
+    Divides all elements of a matrix by div.
     Args:
-        matrix (list): A list of lists of integers or floats.
-        div (int/float): The number to divide the matrix by.
-
+        matrix: A list of lists of integers or floats.
+        div: The divisor.
     Returns:
-        list: A new matrix with the results rounded to 2 decimal places.
+        A new matrix with elements divided by div.
     """
     msg = "matrix must be a matrix (list of lists) of integers/floats"
 
-    # Check if matrix is a list of lists
-    if not isinstance(matrix, list) or len(matrix) == 0:
+    # matrix-in list olduğunu yoxla
+    if not isinstance(matrix, list) or matrix == [] or not matrix:
         raise TypeError(msg)
 
+    # hər bir sətrin list olduğunu və içindəkilərin rəqəm olduğunu yoxla
     for row in matrix:
-        if not isinstance(row, list):
+        if not isinstance(row, list) or len(row) == 0:
             raise TypeError(msg)
-        # Check if all elements in row are integers or floats
-        for element in row:
-            if not isinstance(element, (int, float)):
+        for x in row:
+            if not isinstance(x, (int, float)):
                 raise TypeError(msg)
 
-    # Check if all rows have the same size
-    row_size = len(matrix[0])
-    for row in matrix:
-        if len(row) != row_size:
-            raise TypeError("Each row of the matrix must have the same size")
+    # sətir ölçülərinin eyniliyini yoxla
+    if not all(len(row) == len(matrix[0]) for row in matrix):
+        raise TypeError("Each row of the matrix must have the same size")
 
-    # Check if div is a number
+    # div-in növünü yoxla
     if not isinstance(div, (int, float)):
         raise TypeError("div must be a number")
 
-    # Check for division by zero
+    # div-in 0 olmasını yoxla
     if div == 0:
         raise ZeroDivisionError("division by zero")
 
-    # Perform division and rounding
+    # Hesablama və yuvarlaqlaşdırma
     return [[round(x / div, 2) for x in row] for row in matrix]
