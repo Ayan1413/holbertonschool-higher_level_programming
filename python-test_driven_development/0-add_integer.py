@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """Module for add_integer function."""
-import math
 
 
 def add_integer(a, b=98):
@@ -9,8 +8,8 @@ def add_integer(a, b=98):
         raise TypeError("a must be an integer")
     if not isinstance(b, (int, float)):
         raise TypeError("b must be an integer")
-    if isinstance(a, float) and (math.isnan(a) or math.isinf(a)):
+    if isinstance(a, float) and (a != a or a == float('inf') or a == float('-inf')):
         raise TypeError("a must be an integer")
-    if isinstance(b, float) and (math.isnan(b) or math.isinf(b)):
+    if isinstance(b, float) and (b != b or b == float('inf') or b == float('-inf')):
         raise TypeError("b must be an integer")
     return int(a) + int(b)
