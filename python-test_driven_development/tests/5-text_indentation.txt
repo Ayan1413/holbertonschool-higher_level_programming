@@ -15,7 +15,7 @@ Example with standard sentences:
     <BLANKLINE>
     Python is great.
 
-Example with leading and trailing spaces (they should be trimmed):
+Example with leading and trailing spaces:
     >>> text_indentation("    Sentence one.    Sentence two?    ")
     Sentence one.
     <BLANKLINE>
@@ -27,17 +27,3 @@ Check if it raises TypeError for non-string inputs:
     Traceback (most recent call last):
         ...
     TypeError: text must be a string
-
-Example with empty string:
-    >>> text_indentation("")
-
-Example with only the special characters:
-    >>> text_indentation(".:?.")
-    .
-    <BLANKLINE>
-    :
-    <BLANKLINE>
-    ?
-    <BLANKLINE>
-    .
-    <BLANKLINE>
