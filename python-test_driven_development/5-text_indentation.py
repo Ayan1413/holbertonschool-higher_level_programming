@@ -16,12 +16,15 @@ def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
     skip_space = True
-    for char in text:
+    for i, char in enumerate(text):
         if skip_space and char == ' ':
             continue
-        print(char, end="")
         skip_space = False
         if char in ".?:":
-            print()
-            print()
+            print(char)
+            remaining = text[i + 1:].lstrip(' ')
+            if remaining:
+                print()
             skip_space = True
+        else:
+            print(char, end="")
