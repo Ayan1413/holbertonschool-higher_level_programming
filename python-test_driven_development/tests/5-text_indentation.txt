@@ -1,7 +1,6 @@
 =====================================
 How to use the text_indentation function
 =====================================
-
 Import the function:
     >>> text_indentation = __import__('5-text_indentation').text_indentation
 
@@ -14,6 +13,7 @@ Example with standard sentences:
     This is a test:
     <BLANKLINE>
     Python is great.
+    <BLANKLINE>
 
 Example with leading and trailing spaces:
     >>> text_indentation("    Sentence one.    Sentence two?    ")
