@@ -31,7 +31,6 @@ class Rectangle:
 
         """
         type(self).number_of_instances += 1
-        # attribute assigment here engages setters defined below
         self.width = width
         self.height = height
 
@@ -107,7 +106,7 @@ class Rectangle:
         return self.__width * self.__height
 
     def perimeter(self):
-        """Returns the perimeter of a rectangle of given `width` and `height`
+        """Returns perimeter of a rectangle of given `width` and `height`
 
         Attributes:
             __width (int): horizontal dimension of rectangle
@@ -118,23 +117,20 @@ class Rectangle:
         (__height * 2).
 
         """
-        if self.__width is 0 or self.__height is 0:
+        if self.__width == 0 or self.__height == 0:
             return 0
         else:
             return (self.__width * 2) + (self.__height * 2)
 
     def _draw_rectangle(self):
-        """Formats a string of '#' and '\n' chars to print the rectangle
-        represented by the current instance.
+        """Formats a string of '#' and '\n' chars to print the rectangle.
 
         Attributes:
             __width (int): horizontal dimension of rectangle
             __height (int): vertical dimension of rectangle
-            str (str): string to constructed for return
 
         Returns:
-            str (str): string suitable for printing rectangle (final newline
-                omitted)
+            str (str): string suitable for printing rectangle
 
         """
         str = ""
@@ -149,8 +145,7 @@ class Rectangle:
         """Allows direct printing of instances.
 
         Returns:
-            The output of _draw_rectangle, which creates a string
-        representation of the rectangle suitable for printing.
+            The output of _draw_rectangle.
 
         """
         return self._draw_rectangle()
@@ -162,20 +157,18 @@ class Rectangle:
             A string containing the code needed to create the instance.
 
         """
-        return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
+        return "Rectangle({:d}, {:d})".format(
+            self.__width, self.__height)
 
     @classmethod
     def __del__(cls):
-        """Decrements `number_of_instances`, then prints message upon
-        deletion of instance.
-
-        """
+        """Decrements `number_of_instances`, prints message on deletion."""
         cls.number_of_instances -= 1
         print('Bye rectangle...')
 
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
-        """Compares the area of two instances and returns the larger of the two.
+        """Compares area of two instances and returns the larger one.
 
         Args:
             rect_1 (Rectangle object): first instance to be compared
@@ -185,8 +178,7 @@ class Rectangle:
             TypeError: if `rect_1` or `rect_2` is not an instance of cls.
 
         Returns:
-            `rect_1` if `rect_1` has an area larger than or equal to `rect_2`,
-        or `rect_2` if it has the larger area
+            `rect_1` if area is larger or equal, else `rect_2`.
 
         """
         if not isinstance(rect_1, Rectangle):
