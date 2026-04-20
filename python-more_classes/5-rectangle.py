@@ -1,21 +1,20 @@
 #!/usr/bin/python3
-"""4-rectangle, built for Holberton Python .
-"""
+"""5-rectangle, built for Holberton Python"""
 
 
 class Rectangle:
     """Takes in args for width and height of a rectangle, and contains methods
     for calculation of the area or perimeter.
 
-    __str__ and __repr__ fuctionality defined below.
+    __str__, __repr__, and __del__ fuctionality defined below.
 
     Args:
         width (int): horizontal dimension of rectangle, defaults to 0
         height (int): vertical dimension of rectangle, defaults to 0
 
     """
+
     def __init__(self, width=0, height=0):
-        # attribute assigment here engages setters defined below
         self.width = width
         self.height = height
 
@@ -33,9 +32,6 @@ class Rectangle:
     def width(self, value):
         """Args:
             value (int): horizontal dimension of rectangle
-
-        Attributes:
-            __width (int): horizontal dimension of rectangle
 
         Raises:
             TypeError: If `value` is not an int.
@@ -63,9 +59,6 @@ class Rectangle:
         """Args:
             value (int): vertical dimension of rectangle
 
-        Attributes:
-            __height (int): vertical dimension of rectangle
-
         Raises:
             TypeError: If `value` is not an int.
             ValueError: If `value` is less than 0.
@@ -78,11 +71,7 @@ class Rectangle:
         self.__height = value
 
     def area(self):
-        """Returns area of a rectangle of a given `width` and `height`.
-
-        Attributes:
-            __width (int): horizontal dimension of rectangle
-            __height (int): vertical dimension of rectangle
+        """Returns area of a rectangle of a given width and height.
 
         Returns:
             Area of rectangle: __width * __height
@@ -91,34 +80,23 @@ class Rectangle:
         return self.__width * self.__height
 
     def perimeter(self):
-        """Returns the perimeter of a rectangle of given `width` and `height`
-
-        Attributes:
-            __width (int): horizontal dimension of rectangle
-            __height (int): vertical dimension of rectangle
+        """Returns perimeter of a rectangle of given width and height.
 
         Returns:
             0 if either attribute is 0, or the perimeter: (__width * 2) +
             (__height * 2).
 
         """
-        if self.__width is 0 or self.__height is 0:
+        if self.__width == 0 or self.__height == 0:
             return 0
         else:
             return (self.__width * 2) + (self.__height * 2)
 
     def _draw_rectangle(self):
-        """Formats a string of '#' and '\n' chars to print the rectangle
-        represented by the current instance.
-
-        Attributes:
-            __width (int): horizontal dimension of rectangle
-            __height (int): vertical dimension of rectangle
-            str (str): string to constructed for return
+        """Formats a string of '#' and newline chars to print the rectangle.
 
         Returns:
-            str (str): string suitable for printing rectangle (final newline
-            omitted)
+            str (str): string suitable for printing rectangle
 
         """
         str = ""
@@ -133,8 +111,7 @@ class Rectangle:
         """Allows direct printing of instances.
 
         Returns:
-            The output of _draw_rectangle, which creates a string
-        representation of the rectangle suitable for printing.
+            The output of _draw_rectangle.
 
         """
         return self._draw_rectangle()
@@ -146,4 +123,9 @@ class Rectangle:
             A string of the code needed to create the instance.
 
         """
-        return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
+        return "Rectangle({:d}, {:d})".format(
+            self.__width, self.__height)
+
+    def __del__(self):
+        """Prints message upon deletion of instance."""
+        print('Bye rectangle...')
