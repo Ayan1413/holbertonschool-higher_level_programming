@@ -1,17 +1,12 @@
-class VerboseList(list):
-    def append(self, item):
-        super().append(item)
-        print(f"Added [{item}] to the list.")
+class CountedIterator:
+    def __init__(self, iterable):
+        self.iterator = iter(iterable)
+        self.count = 0
 
-    def extend(self, items):
-        super().extend(items)
-        print(f"Extended the list with [{len(items)}] items.")
+    def get_count(self):
+        return self.count
 
-    def remove(self, item):
-        print(f"Removed [{item}] from the list.")
-        super().remove(item)
-
-    def pop(self, index=-1):
-        item = self[index]
-        print(f"Popped [{item}] from the list.")
-        return super().pop(index)
+    def __next__(self):
+        item = next(self.iterator)
+        self.count += 1
+        return item
