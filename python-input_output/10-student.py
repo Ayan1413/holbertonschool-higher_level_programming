@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Module to define a Student class with an optional attribute filter."""
 
+
 class Student:
     """A class to represent a student."""
 
@@ -21,7 +22,7 @@ class Student:
         """
         Returns a dictionary representation of the Student instance.
 
-        If `attrs` is provided, only include those attributes in the dictionary.
+        If `attrs` is provided, only include those attributes.
         Otherwise, return all attributes.
 
         Args:
@@ -31,11 +32,9 @@ class Student:
             dict: A dictionary representation of the instance.
         """
         if attrs is None:
-            return vars(self)  # Return all attributes
-        else:
-            # Filter the attributes based on `attrs` and return a dictionary
-            result = {}
-            for attr in attrs:
-                if hasattr(self, attr):
-                    result[attr] = getattr(self, attr)
-            return result
+            return vars(self)
+        result = {}
+        for attr in attrs:
+            if hasattr(self, attr):
+                result[attr] = getattr(self, attr)
+        return result
