@@ -1,2 +1,3 @@
--- list of all databases in mysql
-SHOW DATABASES;
+-- script that lists all privileges of the MySQL users on DB server (in localhost).
+SHOW GRANTS FOR 'user_0d_1'@'localhost';
+SHOW GRANTS FOR 'user_0d_2'@'localhost';
