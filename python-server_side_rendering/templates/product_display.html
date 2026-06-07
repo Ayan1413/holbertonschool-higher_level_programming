@@ -5,7 +5,9 @@
 </head>
 <body>
     <h1>Products</h1>
-    {% if products %}
+    {% if error %}
+        <p>{{ error }}</p>
+    {% elif products %}
         <table border="1">
             <thead>
                 <tr>
